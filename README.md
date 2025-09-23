@@ -4,14 +4,15 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 ### Core Features:
 - User authentication and profiles - we;ll be looking to include these in a technical sense, but to allow for time on the rest of the project, the profiles and authentication steps will likely be the bare minimum.
 - Recipe creation, editing, and sharing - The main feature of the app will focus on the recipes, listing ingredients, and posting the meal.
-- Meal planning calendar - We plan to include a calendar that one can add meals to, whether by links to a post or copying a meal to the day.
 - Shopping list generation - As this is ingredient focused, there'll be a feature to generate a shopping list based off of the recipes you view.
 - Recipe rating and reviews - Acting like our version of liking/retweeting posts, meals will be able to be rated by other users from 1-5 Stars
+- Meal planning calendar - If time permits, we plan to include a calendar that one can add meals to, whether by links to a post or copying a meal to the day.
+
 
 ### Technical Implementation:
 - UI Layer: Templates with Bootstrap for recipe browsing, meal planning calendar
 
-- Business Logic: Recipe recommendation engine, meal plan algorithms, shopping list optimization
+- Business Logic: Recipe recommendation engine (by ratings), meal plan algorithms, shopping list optimization
 
 - Persistence: JPA/Hibernate for recipes, users, meal plans, ratings
 
@@ -22,9 +23,13 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 
 # 2. Storyboard
 ### 
+
 # 3. Functional Requirements
-# 4. Class Diagram - 
+
+# 4. Class Diagram - Eric
+
 # 5. JSON Scheme
+
 # 6. Scrum Roles
 Eric Coomer - (Temporary) GitHub Admin/Product Owner/Scrum Master, (Likely) Business Logic and Persistence
 
@@ -40,4 +45,4 @@ Hari Sathyanarayanan -
 
 # 8. A Scrum or Kanban board - LucidSpark?
 
-# 9. Link to Teams
+# 9. [Link to Teams](https://teams.microsoft.com/l/chat/19:a7b58f8bc1514dba87d412eaeeb0b98c@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D)
