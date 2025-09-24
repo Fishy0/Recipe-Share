@@ -33,6 +33,35 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 
 # 5. JSON Scheme - Eric
 
+Schema for Recipe
+> {
+>  "type": "object",
+>  "properties": {
+>    "recipeId": { "type": "integer" },
+>    "recipeName": { "type": "string" },
+>    "recipeIngredients": {
+>      "type": "array",
+>      "items": { "type": "string" }
+>    },
+>    "recipeRating": { "type": "integer" }
+>  }
+> }
+
+Schema for User
+> {
+>  "type": "object",
+>  "properties": {
+>    "userId": { "type": "integer" },
+>    "userName": { "type": "string" },
+>    "userEmail": { "type": "string", "format": "email" },
+>    "userPassword": { "type": "string" },
+>    "numberOfRecipes": { "type": "integer" },
+>    "profileDescription": { "type": "string" }
+>  }
+> }
+
+
+
 # 6. Scrum Roles
 Eric Coomer - (Temporary) GitHub Admin/Product Owner/Scrum Master, (Likely) Business Logic and Persistence
 
