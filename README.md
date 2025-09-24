@@ -28,6 +28,8 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 # 3. Functional Requirements - Jaecar
 
 # 4. Class Diagram - Eric
+![Class Diagram](ClassDiagramImage/Class_Diagram_v1.png)
+
 
 # 5. JSON Scheme - Eric
 
