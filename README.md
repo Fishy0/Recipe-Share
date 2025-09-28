@@ -43,13 +43,13 @@ The system shall allow authenticated users to view and rate recipes.
 ### FR-4: Profile Management
 
 The system shall display a user's created recipes on their profile page.
-The system shall show user's recipe statistics and ratings received.
+The system shall show the user's recipe statistics and ratings received.
 
 ### FR-5: Recipe Creation
 
 The system shall allow authenticated users to create new recipes.
 The system shall require recipe name, ingredients list, and cooking instructions.
-The system shall allow users to add optional fields: cooking time, servings, difficulty level.
+The system shall allow users to add optional fields: cooking time, servings, and difficulty level.
 The system shall auto-assign unique recipe IDs.
 
 ### FR-6: Recipe Editing
@@ -65,7 +65,7 @@ The system shall confirm deletion actions with user prompts.
 ### FR-8: Recipe Viewing
 
 The system shall display recipes in a social media feed format.
-The system shall show recipe details including ingredients, instructions, and ratings.
+The system shall show recipe details, including ingredients, instructions, and ratings.
 The system shall provide individual recipe detail pages.
 
 ### FR-9: Recipe Search
@@ -141,7 +141,7 @@ The system shall implement proper HTTP status codes and error handling.
 
 ### FR-21: Responsive Design
 
-The system may provide mobile-friendly responsive design.
+The system may provide a mobile-friendly responsive design.
 The system shall work consistently across modern web browsers.
 The system may support touch interfaces for mobile devices.
 
@@ -153,7 +153,7 @@ The system shall display clear error messages and validation feedback.
 ### FR-23: Visual Design
 
 The system shall implement a consistent visual design system.
-The system shall provide clear visual hierarchy and typography.
+The system shall provide a clear visual hierarchy and typography.
 
 
 
@@ -255,6 +255,6 @@ Hari Sathyanarayanan -
 
 # 7. [Github.com Link](https://github.com/Eric-C2/Enterprise-Application-Development-Group-8)
 
-# 8. A Scrum or Kanban board - LucidSpark? Jaecar
+# 8. [Sprint Board](https://lucid.app/lucidspark/eca2b01a-7fca-4850-8af8-8ef2eb186a2e/edit?view_items=zKEUMnlM3hkO&invitationId=inv_25b91ee9-e6c7-4887-be69-d839de4ea22b)
 
 # 9. [Link to Teams](https://teams.microsoft.com/l/chat/19:a7b58f8bc1514dba87d412eaeeb0b98c@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D)
