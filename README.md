@@ -4,7 +4,7 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 ### Core Features:
 - User authentication and profiles - we'll be looking to include these in a technical sense, but to allow for time on the rest of the project, the profiles and authentication steps will likely be the bare minimum.
 - Recipe creation, editing, and sharing - The main feature of the app will focus on the recipes, listing ingredients, and posting the meal.
-- Shopping list generation - As this is ingredient focused, there'll be a feature to generate a shopping list based off of the recipes you view.
+- Shopping list generation - As this is ingredient-focused, there'll be a feature to generate a shopping list based off of the recipes you view.
 - Recipe rating and reviews - Acting like our version of liking/retweeting posts, meals will be able to be rated by other users from 1-5 Stars
 - Meal planning calendar - If time permits, we plan to include a calendar that one can add meals to, whether by links to a post or copying a meal to the day.
 
@@ -25,193 +25,110 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 ### A user writing a recipe and posting it
 ### A user reviewing a recipe and rating it
 
-# 3. Functional Requirements - Jaecar
-### FR-1: User Registration
+# 3. Functional Requirements
+# Functional Requirements - User Stories
 
-The system shall have users and validate them.
+## 1. User Authentication and Profile Management
 
-### FR-2: User Profiles
+**As a** food enthusiast
+**I want** to register and manage my profile
+**So that I can** create, share, and track my recipes while viewing my cooking statistics
 
-The system shall allow users to view and edit their posts.
-The system shall display user statistics.
+### Examples:
 
-### FR-3: User Authorization
+* **Given** I am an unregistered user
+* **When** I navigate to the registration page, enter a valid email "user@example.com", password "SecurePass123!", and confirm password
+* **Then** my account is created, I receive confirmation, and I can log in with these credentials
 
-The system shall ensure users can only edit/delete their own recipes.
-The system shall allow authenticated users to view and rate recipes.
+* **Given** I am a registered user with saved recipes
+* **When** I log in and navigate to my profile page
+* **Then** I see my created recipes, total recipe count, average rating received, and profile statistics
 
-### FR-4: Profile Management
+* **Given** I am logged in as user "chef_alice"
+* **When** I attempt to edit a recipe created by user "baker_bob"
+* **Then** the system prevents the action and displays the "You can only edit your own recipes" error message
 
-The system shall display a user's created recipes on their profile page.
-The system shall show the user's recipe statistics and ratings received.
+* **Given** I am logged in with an existing profile
+* **When** I update my profile information with invalid data (empty email field)
+* **Then** the system shows validation errors and prevents saving until all required fields are properly filled
 
-### FR-5: Recipe Creation
+## 2. Recipe Creation and Management
 
-The system shall allow authenticated users to create new recipes.
-The system shall require recipe name, ingredients list, and cooking instructions.
-The system shall allow users to add optional fields: cooking time, servings, and difficulty level.
-The system shall auto-assign unique recipe IDs.
+**As a** recipe creator
+**I want** to create, edit, and delete recipes with detailed information
+**So that I can** share my cooking knowledge and maintain my recipe collection
 
-### FR-6: Recipe Editing
+### Examples:
 
-The system shall allow recipe authors to edit their existing recipes.
-The system shall validate all required fields during updates.
+* **Given** I am an authenticated user
+* **When** I create a new recipe with the name "Chocolate Chip Cookies", the ingredients list ["2 cups flour", "1 cup sugar"], and instructions "Mix ingredients and bake"
+* **Then** a unique recipe ID is assigned, the recipe is saved, and I can view it in my profile
 
-### FR-7: Recipe Deletion
+* **Given** I have a recipe with optional fields missing
+* **When** I add cooking time "30 minutes", servings "4", and difficulty level "Easy"
+* **Then** the recipe is updated with complete information and displays properly in search results
 
-The system shall allow recipe authors to delete their own recipes.
-The system shall confirm deletion actions with user prompts.
+* **Given** I am the author of recipe ID 123
+* **When** I click delete and confirm the deletion prompt
+* **Then** the recipe is permanently removed from the system and no longer appears in searches or my profile
 
-### FR-8: Recipe Viewing
+* **Given** I am editing my recipe
+* **When** I attempt to save with missing required fields (empty ingredients list)
+* **Then** validation errors appear, highlighting missing fields, and the save is prevented until corrected
 
-The system shall display recipes in a social media feed format.
-The system shall show recipe details, including ingredients, instructions, and ratings.
-The system shall provide individual recipe detail pages.
+## 3. Recipe Discovery and Rating System
 
-### FR-9: Recipe Search
+**As a** recipe browser
+**I want** to search, filter, and rate recipes
+**So that I can** discover new dishes and share feedback with the community
 
-The system shall allow users to search recipes by name.
-The system shall support filtering.
+### Examples:
 
-### FR-10: Recipe Categories/Tags
+* **Given** the system contains recipes with various names and tags
+* **When** I search for "chocolate" and filter by the "dessert" category
+* **Then** I see all dessert recipes containing "chocolate" in the name, sorted by relevance or rating
 
-The system shall allow users to categorize recipes (breakfast, lunch, dinner, dessert, etc.).
-The system shall support multiple tags per recipe.
-The system shall provide filtering by categories and tags.
+* **Given** I am viewing a recipe I haven't rated
+* **When** I select 4 stars and submit my rating
+* **Then** my rating is recorded, the recipe's average rating updates, and I cannot rate this recipe again
 
-### FR-11: Recipe Images
+* **Given** I previously rated a recipe 3 stars
+* **When** I change my rating to 5 stars
+* **Then** my old rating is replaced, the average rating recalculates, and the new rating is displayed
 
-The system shall allow users to upload images for their recipes.
-The system shall support common image formats.
-The system shall resize and optimize images for display.
-The system shall provide default placeholder images for recipes without photos.
+* **Given** I am viewing my own recipe
+* **When** I attempt to rate it
+* **Then** the rating interface is disabled with the message "You cannot rate your own recipes."
 
-### FR-12: Recipe Sharing
+## 4. Recipe Sharing and Social Features
 
-The system shall provide shareable links for individual recipes.
-The system shall generate social media sharing options.
-The system shall allow recipe printing functionality.
+**As a** recipe sharer
+**I want** to share recipes through various channels and view them in a social feed
+**So that I can** spread cooking inspiration and engage with the cooking community
 
-### FR-13: Recipe Recommendations
+### Examples:
 
-The system shall recommend recipes based on user ratings.
-The system shall display highly-rated recipes prominently.
-The system shall suggest similar recipes based on ingredients.
+* **Given** I am viewing a recipe detail page
+* **When** I click the share button and select "Generate Link"
+* **Then** a shareable URL is created that allows anyone to view the recipe without authentication
 
-### FR-14: Recipe Rating
+* **Given** I am on the main feed page
+* **When** the page loads
+* **Then** I see recipes displayed in chronological order with images, ratings, brief descriptions, and creator information
 
-The system shall allow authenticated users to rate recipes on a 1-5 star scale
-The system shall prevent users from rating their own recipes
-The system shall allow users to update their existing ratings
+* **Given** I want to print a recipe for offline cooking
+* **When** I click the print button on recipe "Beef Stew"
+* **Then** a printer-friendly version opens with optimized formatting showing ingredients, instructions, and cooking details
 
-### FR-15: Rating Display
+* **Given** the system has recipes with similar ingredients
+* **When** I view a pasta recipe containing tomatoes and basil
+* **Then** the recommendation section shows other recipes with tomatoes and basil, ordered by rating and similarity
 
-The system shall display average ratings for each recipe.
-The system shall show the total number of ratings received.
-The system shall display ratings in a visually clear star format.
-
-### FR-16: Review Comments (Bonus)
-
-The system may allow users to leave text reviews with ratings.
-The system may provide comment moderation functionality.
-The system may display recent reviews on recipe pages.
-
-### FR-17: Rating Validation
-
-The system shall validate rating values are within 1-5 range.
-The system shall prevent duplicate ratings from the same user for the same recipe.
-The system shall handle rating updates and recalculate averages.
-
-### FR-18: Response Time
-
-The system shall load recipe feeds quickly.
-The system shall provide search results quickly.
-The system shall handle concurrent user sessions efficiently.
-
-### FR-19: Data Persistence
-
-The system shall store all data persistently.
-The system shall maintain data integrity and consistency.
-
-### FR-20: API Functionality
-
-The system shall provide RESTful JSON APIs for all major functions.
-The system may support mobile application integration.
-The system shall implement proper HTTP status codes and error handling.
-
-### FR-21: Responsive Design
-
-The system may provide a mobile-friendly responsive design.
-The system shall work consistently across modern web browsers.
-The system may support touch interfaces for mobile devices.
-
-### FR-22: User Experience
-
-The system shall provide intuitive navigation and user flows.
-The system shall display clear error messages and validation feedback.
-
-### FR-23: Visual Design
-
-The system shall implement a consistent visual design system.
-The system shall provide a clear visual hierarchy and typography.
-
-
-
-
-## Time Permitting
-### FR-24: Shopping List Generation (Bonus)
-
-The system shall generate shopping lists from selected recipes
-The system shall combine duplicate ingredients automatically
-The system shall allow users to add custom items to shopping lists
-
-### FR-25: Shopping List Management (Bonus)
-
-The system shall allow users to create multiple named shopping lists.
-The system shall provide functionality to edit shopping list items.
-The system shall support checking off completed items.
-
-### FR-26: Shopping List Export (Bonus)
-
-The system shall allow users to export shopping lists as text.
-The system shall provide email functionality for sharing lists.
-The system shall support printing shopping lists.
-
-### FR-27: Shopping List Persistence (Bonus)
-
-The system shall save shopping lists for registered users
-The system shall maintain shopping list history
-The system shall allow deletion of completed shopping lists
-
-### FR-28: Calendar Integration
-
-The system may provide a calendar view for meal planning.
-The system may allow users to assign recipes to specific dates.
-The system may support weekly and monthly calendar views.
-
-### FR-29: Meal Plan Creation
-
-The system may allow users to create structured meal plans.
-The system may support meal plans for multiple days/weeks.
-The system may provide meal plan templates.
-
-### FR-30: Meal Plan Management
-
-The system may allow editing and rearranging of planned meals
-The system may provide meal plan sharing functionality
-The system may support copying meal plans
-
-### FR-31: Calendar Export
-
-The system may export meal plans to external calendar applications.
-The system may provide meal plan reminders.
-The system may integrate with third-party calendar services.
-
-# 4. Class Diagram - Eric
+# 4. Class Diagram
 ![Class Diagram](ClassDiagramImage/Class_Diagram_v1.png)
 
 
-# 5. JSON Scheme - Eric
+# 5. JSON Scheme
 
 Schema for Recipe
 > {
@@ -243,15 +160,15 @@ Schema for User
 
 
 # 6. Scrum Roles
-Eric Coomer - (Temporary) GitHub Admin/Product Owner/Scrum Master, (Likely) Business Logic and Persistence
+Eric Coomer - Business Logic and Persistence
 
-Alicia Davoyan - 
+Alicia Davoyan - UI
 
-Jaecar Ly - (Possible) Github Admin/Product Owner/Scrum Master
+Jaecar Ly - Github Admin/Product Owner/Scrum Master
 
-Dan Rice - No Preference
+Dan Rice - UI
 
-Hari Sathyanarayanan - 
+Hari Sathyanarayanan - Business Logic and Persistence
 
 # 7. [Github.com Link](https://github.com/Eric-C2/Enterprise-Application-Development-Group-8)
 
