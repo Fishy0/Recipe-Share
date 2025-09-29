@@ -21,9 +21,12 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 - JSON APIs: RESTful endpoints for mobile app potential
 
 
-# 2. Storyboard - ?
+# 2. Storyboard:
 ### A user writing a recipe and posting it
-### A user reviewing a recipe and rating it
+<img width="1284" height="959" alt="Storyboard-1_user-making-post" src="https://github.com/user-attachments/assets/a5706364-fe01-46b6-8b49-55ca02a3e2a0" />
+
+### A user finding a recipe and rating it
+<img width="1284" height="957" alt="Storyboar-2_user-finding-post" src="https://github.com/user-attachments/assets/09a5a8cd-ae9c-4bec-9442-f39d7bf525c8" />
 
 # 3. Functional Requirements
 # Functional Requirements - User Stories
