@@ -162,7 +162,7 @@ Schema for User
 
 
 
-# 6. Scrum Roles
+# 6. Roles and Members
 Eric Coomer - Business Logic and Persistence
 
 Alicia Davoyan - UI
@@ -177,4 +177,4 @@ Hari Sathyanarayanan - Business Logic and Persistence
 
 # 8. [Sprint Board](https://lucid.app/lucidspark/eca2b01a-7fca-4850-8af8-8ef2eb186a2e/edit?view_items=zKEUMnlM3hkO&invitationId=inv_25b91ee9-e6c7-4887-be69-d839de4ea22b)
 
-# 9. [Link to Teams](https://teams.microsoft.com/l/chat/19:a7b58f8bc1514dba87d412eaeeb0b98c@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D)
+# 9. [Link to Teams](https://teams.microsoft.com/l/chat/19:a7b58f8bc1514dba87d412eaeeb0b98c@thread.v2/conversations?context=%7B%22contextType%22%3A%22chat%22%7D) Tuesdays 7PM EST
