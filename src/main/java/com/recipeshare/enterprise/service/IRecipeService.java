@@ -5,8 +5,8 @@ import com.recipeshare.enterprise.dto.RecipeDTO;
 import java.util.List;
 
 public interface IRecipeService {
-    List<RecipeDTO> GetAllRecipes();
+    List<RecipeDTO> getAllRecipes();
     RecipeDTO fetchById(int id);
     void deleteById(int id);
-    RecipeDTO save(RecipeDTO recipe);
+    boolean save(RecipeDTO recipe);
 }

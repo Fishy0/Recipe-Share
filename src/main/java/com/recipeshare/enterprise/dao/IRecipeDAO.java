@@ -1,5 +1,9 @@
 package com.recipeshare.enterprise.dao;
 
-public interface IRecipeDAO {
+import com.recipeshare.enterprise.dto.RecipeDTO;
 
+import java.util.List;
+
+public interface IRecipeDAO {
+    List<RecipeDTO> GetAllRecipes();
 }
