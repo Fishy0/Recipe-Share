@@ -1,21 +1,22 @@
 package com.recipeshare.enterprise.dao;
 
 import com.recipeshare.enterprise.dto.RecipeDTO;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class RecipeDAOStub implements IRecipeDAO {
 
-    private List<RecipeDTO> recipes = new ArrayList<>();
-
     @Override
-    public List<RecipeDTO> GetAllRecipes() {
-        return List.of(
+    public List<RecipeDTO> getAllRecipes() {
+
+        return new ArrayList<>(List.of(
                 new RecipeDTO(1, "Fruit Loops", new String[] {"Bowl"}, (short) 5),
                 new RecipeDTO(2, "Frosted Flakes", new String[] {"Bowl", "milk"}, (short) 2),
                 new RecipeDTO(2, "Frosted Flakes", new String[] {"Bowl", "milk", "spoon"}, (short) 3)
-        );
+        ));
     }
 
     public RecipeDTO fetchById(int id) {

@@ -1,4 +1,4 @@
 package com.recipeshare.enterprise.dao;
 
-public class UserDAO implements IUserDAO {
-}
+// TODO: implement real DAO here
+// public class UserDAO implements IUserDAO { }

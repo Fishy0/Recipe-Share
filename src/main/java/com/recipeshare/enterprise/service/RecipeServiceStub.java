@@ -9,11 +9,15 @@ import java.util.List;
 @Service
 public class RecipeServiceStub implements IRecipeService {
 
-    RecipeDAOStub recipeDAOStub = new RecipeDAOStub();
+    private final RecipeDAOStub recipeDAOStub;
+
+    public RecipeServiceStub(RecipeDAOStub recipeDAOStub) {
+        this.recipeDAOStub = recipeDAOStub;
+    }
 
     @Override
     public List<RecipeDTO> getAllRecipes() {
-        return recipeDAOStub.GetAllRecipes();
+        return recipeDAOStub.getAllRecipes();
     }
 
     @Override

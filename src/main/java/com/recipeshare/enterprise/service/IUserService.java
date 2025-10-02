@@ -5,8 +5,8 @@ import com.recipeshare.enterprise.dto.UserDTO;
 import java.util.List;
 
 public interface IUserService {
-    List<UserDTO> GetAllUsers();
+    List<UserDTO> getAllUsers();
     UserDTO fetchById(int id);
     void deleteById(int id);
-    UserDTO saveById(UserDTO user);
+    boolean saveById(UserDTO user);
 }
