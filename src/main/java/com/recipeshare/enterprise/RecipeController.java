@@ -1,13 +1,39 @@
 package com.recipeshare.enterprise;
 
+import com.recipeshare.enterprise.dto.RecipeDTO;
+import com.recipeshare.enterprise.service.IRecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class RecipeController {
 
-    @RequestMapping("RecipeIndex")
+    private final IRecipeService recipeService;
+
+    public RecipeController(IRecipeService recipeService) {
+        this.recipeService = recipeService;
+    }
+
+    @RequestMapping("/")
     public String index() {
-            return "RecipeIndex";
+            return "index";
+    }
+
+
+    @GetMapping("/getAllRecipes")
+    @ResponseBody
+    public List<RecipeDTO> getAllRecipes() {
+        return recipeService.getAllRecipes();
+    }
+
+    @GetMapping("/getRecipeById")
+    @ResponseBody
+    public RecipeDTO fetchById(@RequestParam int id) {
+        return recipeService.fetchById(id);
     }
 }

@@ -1,4 +1,4 @@
 package com.recipeshare.enterprise.dao;
 
-public class RecipeDAO implements IRecipeDAO {
-}
+// TODO: implement real RecipeDAO here
+// public class RecipeDAO implements IRecipeDAO {}

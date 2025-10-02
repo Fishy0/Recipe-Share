@@ -1,16 +1,15 @@
 package com.recipeshare.enterprise.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class RecipeDTO {
-    int recipeId;
-    String recipeName;
-    String[] recipeIngredients;
-    short recipeRating;
-
-    public RecipeDTO(int recipeId, String recipeName, String[] recipeIngredients, short recipeRating) {
-        this.recipeId = recipeId;
-        this.recipeName = recipeName;
-        this.recipeIngredients = recipeIngredients;
-        this.recipeRating = recipeRating;
-    }
+    private int recipeId;
+    private String recipeName;
+    private String[] recipeIngredients;
+    private short recipeRating;
 }
-
