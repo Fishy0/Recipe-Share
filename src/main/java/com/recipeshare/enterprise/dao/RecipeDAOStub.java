@@ -13,17 +13,18 @@ public class RecipeDAOStub implements IRecipeDAO {
     public List<RecipeDTO> getAllRecipes() {
 
         return new ArrayList<>(List.of(
-                new RecipeDTO(1, "Fruit Loops", new String[] {"Bowl"}, (short) 5),
-                new RecipeDTO(2, "Frosted Flakes", new String[] {"Bowl", "milk"}, (short) 2),
-                new RecipeDTO(2, "Frosted Flakes", new String[] {"Bowl", "milk", "spoon"}, (short) 3)
+                new RecipeDTO(1, "Fruit Loops", "Fruit loops cereal", "Bowl", (short) 5),
+                new RecipeDTO(2, "Frosted Flakes", "Frosted Flakes Cereal", "Bowl, Milk", (short) 2),
+                new RecipeDTO(2, "Frosted Flakes", "Frosted Flakes Cereal", "Bowl, Milk, Spoon", (short) 3)
         ));
     }
 
     public RecipeDTO fetchById(int id) {
         return new RecipeDTO(
                 1,
-                "Fruit loops Cereal",
-                new String[] {"Bowl", "milk", "Spoon"},
+                "Fruit loop",
+                "Fruit Loops Cereal",
+                "Bowl, Spoon, Milk",
                 (short) 5);
     }
 

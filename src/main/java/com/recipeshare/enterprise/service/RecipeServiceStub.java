@@ -30,7 +30,7 @@ public class RecipeServiceStub implements IRecipeService {
     }
 
     public boolean save(RecipeDTO recipe) {
-        recipe = new RecipeDTO(55, "Cornflakes", new String[] {"sugar", "bleach", "gatorade"}, (short) 5);
+        recipe = new RecipeDTO(55, "Cornflakes", "Its real good", "Sugar, Gatorade", (short) 5);
         return recipeDAOStub.save(recipe);
     }
 

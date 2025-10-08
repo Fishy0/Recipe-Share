@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 public class RecipeDTO {
     private int recipeId;
     private String recipeName;
-    private String[] recipeIngredients;
+    private String recipeDescription;
+    private String recipeIngredients;
     private short recipeRating;
 }
