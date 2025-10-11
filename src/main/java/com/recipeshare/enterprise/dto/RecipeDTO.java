@@ -12,5 +12,7 @@ public class RecipeDTO {
     private String recipeName;
     private String recipeDescription;
     private String recipeIngredients;
+    private String recipeCategory;
     private short recipeRating;
 }
+
