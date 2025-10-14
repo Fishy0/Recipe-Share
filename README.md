@@ -112,8 +112,8 @@ We decided on a Recipe and Meal Sharing "Platform" which would allow users to cr
 ### Examples:
 
 * **Given** I am viewing a recipe detail page
-* **When** I click the share button and select "Generate Link"
-* **Then** a shareable URL is created that allows anyone to view the recipe without authentication
+* **When** I click the share button and select "Copy Recipe"
+* **Then** a copy of the recipe is copied to the device's clipboard
 
 * **Given** I am on the main feed page
 * **When** the page loads
