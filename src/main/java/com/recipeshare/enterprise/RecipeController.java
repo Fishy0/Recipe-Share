@@ -21,7 +21,7 @@ public class RecipeController {
 
     @RequestMapping("/")
     public String index() {
-            return "index";
+            return "Home";
     }
 
 
