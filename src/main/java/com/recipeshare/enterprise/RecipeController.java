@@ -21,6 +21,8 @@ public class RecipeController {
 
     @RequestMapping("/")
     public String index() {
+        Category category = new Catagory();
+        category.setDescription("Recipe Catagories");
             return "Home";
     }
 
