@@ -11,5 +11,7 @@
   font-weight: bold;
 ">Welcome to our Recipe site!</h1>
 <p> th:text= "${Category}" </p>
+<form action="#" th:action= "@{/recipesLookup}" th:object= "${Category}" method="GET">
+    <Label>Description</Label><input type="Text" name= "Recipes Categories" th:field="*{Categories}"/>
 </body>
 </html>
