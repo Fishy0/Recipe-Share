@@ -26,8 +26,16 @@ public class RecipeService implements IRecipeService {
         return recipeDAO.fetchById(id);
     }
     @Override
-    public void deleteById(int id) {
-        recipeDAO.deleteById(1);
+    public String deleteById(int id) {
+        RecipeDTO recipe = recipeDAO.fetchById(id);
+        if (recipe != null) {
+            recipeDAO.deleteById(id);
+            return "Recipe with id: " + id + " deleted";
+        }
+        else {
+            return "Recipe with id: " + id + " not found";
+        }
+
     }
 
     public boolean save(RecipeDTO recipe) {

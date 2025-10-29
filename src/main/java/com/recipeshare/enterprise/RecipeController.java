@@ -3,10 +3,7 @@ package com.recipeshare.enterprise;
 import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.service.IRecipeService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,11 @@ public class RecipeController {
     @ResponseBody
     public RecipeDTO fetchById(@RequestParam int id) {
         return recipeService.fetchById(id);
+    }
+
+    @DeleteMapping("/deleteRecipeById")
+    @ResponseBody
+    public String deleteRecipeById(@RequestParam int id) {
+        return recipeService.deleteById(id);
     }
 }
