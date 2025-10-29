@@ -5,10 +5,7 @@ import com.recipeshare.enterprise.dto.UserDTO;
 import com.recipeshare.enterprise.service.IRecipeService;
 import com.recipeshare.enterprise.service.IUserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +34,17 @@ public class UserController {
     @ResponseBody
     public UserDTO fetchById(@RequestParam int id) {
         return userService.fetchById(id);
+    }
+
+    @PostMapping("/saveUser")
+    @ResponseBody
+    public String saveUser(@RequestBody UserDTO userDTO) {
+        return userService.saveUser(userDTO);
+    }
+
+    @DeleteMapping("/deleteUserById")
+    @ResponseBody
+    public String deleteUserById(@RequestParam int id) {
+        return userService.deleteUserById(id);
     }
 }

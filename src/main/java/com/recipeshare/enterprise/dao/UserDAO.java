@@ -1,6 +1,8 @@
 package com.recipeshare.enterprise.dao;
 
+import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
+import com.recipeshare.enterprise.entity.Recipe;
 import com.recipeshare.enterprise.entity.Users;
 import com.recipeshare.enterprise.repository.UserRepository;
 import org.springframework.stereotype.Repository;
@@ -29,8 +31,9 @@ public class UserDAO implements IUserDAO {
         return users.map(this::convertToDTO).orElse(null);
     }
 
-    public boolean save(UserDTO user) {
-        return true;
+    public void saveUser(UserDTO user) {
+        Users userEntity = convertToEntity(user);
+        repo.save(userEntity);
     }
 
     public void deleteById(int id) {
@@ -47,5 +50,13 @@ public class UserDAO implements IUserDAO {
                 user.getNumberOfRecipes(),
                 user.getProfileDescription()
         );
+    }
+
+    private Users convertToEntity(UserDTO dto) {
+        Users user = new Users();
+        user.setUserName(dto.getUserName());
+        user.setUserEmail(dto.getUserEmail());
+        user.setUserPassword(dto.getUserPassword());
+        return user;
     }
 }

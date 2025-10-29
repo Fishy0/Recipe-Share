@@ -1,6 +1,7 @@
 package com.recipeshare.enterprise.service;
 
 import com.recipeshare.enterprise.dao.UserDAO;
+import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +26,25 @@ public class UserService implements IUserService {
         return userDAO.fetchById(id);
     }
     @Override
-    public void deleteById(int id) {
-        userDAO.deleteById(id);
+    public String deleteUserById(int id) {
+        UserDTO user = userDAO.fetchById(id);
+        if (user != null) {
+            userDAO.deleteById(id);
+            return "User with id: " + id + " deleted";
+        }
+        else {
+            return "User with id: " + id + " not found";
+        }
     }
 
-    public boolean saveById(UserDTO user) {
-        return userDAO.save(user);
+    public String saveUser(UserDTO userDTO) {
+        if (userDTO == null) {
+            return "ERROR: Invalid user data.";
+        }
+        else {
+            userDAO.saveUser(userDTO);
+            return "User saved successfully";
+        }
     }
 
 }

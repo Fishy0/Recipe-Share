@@ -7,5 +7,5 @@ public interface IUserDAO {
     List<UserDTO> getAllUsers();
     UserDTO fetchById(int id);
     void deleteById(int id);
-    boolean save(UserDTO user);
+    void saveUser(UserDTO user);
 }

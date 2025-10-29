@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class Users {
 
-    protected Users() {}
+    public Users() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

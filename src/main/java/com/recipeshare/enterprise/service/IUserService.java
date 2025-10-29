@@ -7,6 +7,6 @@ import java.util.List;
 public interface IUserService {
     List<UserDTO> getAllUsers();
     UserDTO fetchById(int id);
-    void deleteById(int id);
-    boolean saveById(UserDTO user);
+    String deleteUserById(int id);
+    String saveUser(UserDTO user);
 }
