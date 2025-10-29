@@ -8,5 +8,5 @@ public interface IRecipeService {
     List<RecipeDTO> getAllRecipes();
     RecipeDTO fetchById(int id);
     String deleteById(int id);
-    boolean save(RecipeDTO recipe);
+    String saveRecipe(RecipeDTO recipe);
 }

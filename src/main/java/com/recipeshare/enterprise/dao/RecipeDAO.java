@@ -23,14 +23,15 @@ public class RecipeDAO implements IRecipeDAO {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
-
+    @Override
     public RecipeDTO fetchById(int id) {
         Optional<Recipe> recipe = repo.findById(id);
         return recipe.map(this::convertToDTO).orElse(null);
     }
-
-    public boolean save(RecipeDTO recipe) {
-        return true;
+    @Override
+    public void saveRecipe(RecipeDTO recipe) {
+        Recipe recipeEntity = convertToEntity(recipe);
+        repo.save(recipeEntity);
     }
 
     public void deleteById(int id) {
@@ -48,6 +49,17 @@ public class RecipeDAO implements IRecipeDAO {
                 recipe.getRecipeCategory(),
                 recipe.getRecipeRating()
         );
+    }
+
+    private Recipe convertToEntity(RecipeDTO dto) {
+        Recipe recipe = new Recipe();
+        recipe.setRecipeId(dto.getRecipeId());
+        recipe.setRecipeName(dto.getRecipeName());
+        recipe.setRecipeDescription(dto.getRecipeDescription());
+        recipe.setRecipeIngredients(dto.getRecipeIngredients());
+        recipe.setRecipeCategory(dto.getRecipeCategory());
+        recipe.setRecipeRating(dto.getRecipeRating());
+        return recipe;
     }
 }
 

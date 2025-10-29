@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class Recipe {
 
-    protected Recipe() {}
+    public Recipe() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +20,6 @@ public class Recipe {
     private String recipeIngredients;
     private String recipeCategory;
     private short recipeRating;
+
+
 }

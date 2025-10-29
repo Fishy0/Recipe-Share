@@ -36,9 +36,14 @@ public class RecipeService implements IRecipeService {
         }
     }
 
-    public boolean save(RecipeDTO recipe) {
-        return recipeDAO.save(recipe);
+    public String saveRecipe(RecipeDTO recipeDTO) {
+        if (recipeDTO == null) {
+            return "ERROR: Invalid recipe data.";
+        }
+        else {
+            recipeDAO.saveRecipe(recipeDTO);
+            return "Recipe saved successfully";
+        }
     }
-
 }
 

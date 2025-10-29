@@ -33,6 +33,12 @@ public class RecipeController {
         return recipeService.fetchById(id);
     }
 
+    @PostMapping("/saveRecipe")
+    @ResponseBody
+    public String saveRecipe(@RequestBody RecipeDTO recipeDTO) {
+        return recipeService.saveRecipe(recipeDTO);
+    }
+
     @DeleteMapping("/deleteRecipeById")
     @ResponseBody
     public String deleteRecipeById(@RequestParam int id) {
