@@ -3,7 +3,6 @@ package com.recipeshare.enterprise.service;
 import com.recipeshare.enterprise.dao.RecipeDAO;
 import com.recipeshare.enterprise.dto.RecipeDTO;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -35,7 +34,6 @@ public class RecipeService implements IRecipeService {
         else {
             return "Recipe with id: " + id + " not found";
         }
-
     }
 
     public boolean save(RecipeDTO recipe) {
