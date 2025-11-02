@@ -41,6 +41,7 @@ public class RecipeDAO implements IRecipeDAO {
 
     // DTO converter
     private RecipeDTO convertToDTO(Recipe recipe) {
+        if (recipe == null) return null;
         return new RecipeDTO(
                 recipe.getRecipeId(),
                 recipe.getRecipeName(),
@@ -52,6 +53,7 @@ public class RecipeDAO implements IRecipeDAO {
     }
 
     private Recipe convertToEntity(RecipeDTO dto) {
+        if (dto == null) return null;
         Recipe recipe = new Recipe();
         recipe.setRecipeId(dto.getRecipeId());
         recipe.setRecipeName(dto.getRecipeName());
