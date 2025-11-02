@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recipe Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
-<h1 style="
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-">Welcome to our Recipe site!</h1>
+<div th:replace="fragments/topnav.html :: navbar">
+
+</div>
+<h1>Welcome to our Recipe site!</h1>
 <div class ="Recipe-Form-Container">
     <h2> Create New Recipe></h2>
     <form id="recipeForm"></form>
@@ -38,12 +37,12 @@
         <input type="text" id="recipeRating" name="Rating" required>
     </div>
     </div>
-<button type="button" class="add-btn" onclick="Place ingredient()">+ Place Ingredient</button>
+<button type="button" class="add-btn" onclick="PlaceIngredient()">+ Place Ingredient</button>
 <div>
     <label for="recipe-steps">Steps</label>
     <input type="text" id="recipe-steps" name="Steps" rows="12">
 </div>
-<button type="button" class="Submit" onclick="Add Recipe()">+ Add Recipe</button>
+<button type="button" class="Submit" onclick="AddRecipe()">+ Add Recipe</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
