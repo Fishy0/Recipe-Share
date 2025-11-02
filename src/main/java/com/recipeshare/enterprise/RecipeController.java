@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class RecipeController {
 
     private final IRecipeService recipeService;
@@ -22,25 +22,21 @@ public class RecipeController {
     }
 
     @GetMapping("/getAllRecipes")
-    @ResponseBody
     public List<RecipeDTO> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
     @GetMapping("/getRecipeById")
-    @ResponseBody
     public RecipeDTO fetchById(@RequestParam int id) {
         return recipeService.fetchById(id);
     }
 
     @PostMapping("/saveRecipe")
-    @ResponseBody
     public String saveRecipe(@RequestBody RecipeDTO recipeDTO) {
         return recipeService.saveRecipe(recipeDTO);
     }
 
     @DeleteMapping("/deleteRecipeById")
-    @ResponseBody
     public String deleteRecipeById(@RequestParam int id) {
         return recipeService.deleteById(id);
     }
