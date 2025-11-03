@@ -9,5 +9,5 @@ public interface IRecipeDAO {
     List<RecipeDTO> getAllRecipes();
     RecipeDTO fetchById(int id);
     void deleteById(int id);
-    void saveRecipe(RecipeDTO recipe);
+    RecipeDTO saveRecipe(RecipeDTO recipe);
 }
