@@ -24,26 +24,22 @@ public class RecipeService implements IRecipeService {
     public RecipeDTO fetchById(int id){
         return recipeDAO.fetchById(id);
     }
+
     @Override
-    public String deleteById(int id) {
+    public boolean deleteById(int id) {
         RecipeDTO recipe = recipeDAO.fetchById(id);
-        if (recipe != null) {
-            recipeDAO.deleteById(id);
-            return "Recipe with id: " + id + " deleted";
+        if (recipe == null) {
+            return false;
         }
-        else {
-            return "Recipe with id: " + id + " not found";
-        }
+        recipeDAO.deleteById(id);
+        return true;
     }
 
-    public String saveRecipe(RecipeDTO recipeDTO) {
+    @Override
+    public RecipeDTO saveRecipe(RecipeDTO recipeDTO) {
         if (recipeDTO == null) {
-            return "ERROR: Invalid recipe data.";
+            throw new IllegalArgumentException("Recipe data must not be null");
         }
-        else {
-            recipeDAO.saveRecipe(recipeDTO);
-            return "Recipe saved successfully";
-        }
+        return recipeDAO.saveRecipe(recipeDTO);
     }
 }
-

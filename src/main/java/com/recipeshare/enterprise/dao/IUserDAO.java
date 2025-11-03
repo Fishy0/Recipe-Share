@@ -7,5 +7,5 @@ public interface IUserDAO {
     List<UserDTO> getAllUsers();
     UserDTO fetchById(int id);
     void deleteById(int id);
-    void saveUser(UserDTO user);
+    UserDTO saveUser(UserDTO user);
 }

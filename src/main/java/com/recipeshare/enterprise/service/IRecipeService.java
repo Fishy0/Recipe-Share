@@ -7,6 +7,6 @@ import java.util.List;
 public interface IRecipeService {
     List<RecipeDTO> getAllRecipes();
     RecipeDTO fetchById(int id);
-    String deleteById(int id);
-    String saveRecipe(RecipeDTO recipe);
+    boolean deleteById(int id);
+    RecipeDTO saveRecipe(RecipeDTO recipe);
 }
