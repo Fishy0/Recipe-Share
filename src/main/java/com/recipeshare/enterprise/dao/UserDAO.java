@@ -1,8 +1,6 @@
 package com.recipeshare.enterprise.dao;
 
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
-import com.recipeshare.enterprise.entity.Recipe;
 import com.recipeshare.enterprise.entity.Users;
 import com.recipeshare.enterprise.repository.UserRepository;
 import org.springframework.stereotype.Repository;

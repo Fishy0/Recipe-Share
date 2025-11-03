@@ -1,8 +1,6 @@
 package com.recipeshare.enterprise;
 
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
-import com.recipeshare.enterprise.service.IRecipeService;
 import com.recipeshare.enterprise.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

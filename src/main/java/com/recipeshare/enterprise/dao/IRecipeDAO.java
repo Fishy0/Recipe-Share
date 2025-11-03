@@ -1,7 +1,6 @@
 package com.recipeshare.enterprise.dao;
 
 import com.recipeshare.enterprise.dto.RecipeDTO;
-import com.recipeshare.enterprise.entity.Recipe;
 
 import java.util.List;
 
