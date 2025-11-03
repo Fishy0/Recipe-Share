@@ -16,10 +16,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/UserIndex")
-    public String index() {
-        return "UserIndex";
-    }
 
 
     @GetMapping("/getAllUsers")

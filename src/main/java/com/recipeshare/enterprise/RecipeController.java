@@ -16,10 +16,6 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping("/")
-    public String index() {
-        return "Home";
-    }
 
     @GetMapping("/getAllRecipes")
     @ResponseBody
