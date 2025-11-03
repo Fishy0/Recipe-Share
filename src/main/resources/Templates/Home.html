@@ -1,46 +1,104 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
-<head>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns="http://www.w3.org/1999/html"
+  lang="en"
+>
+  <head>
     <title>Recipe Home Page</title>
-</head>
-<body>
-<h1 style="
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-">Welcome to our Recipe site!</h1>
-<div class ="Recipe-Form-Container">
-    <h2> Create New Recipe></h2>
-    <form id="recipeForm"></form>
-    <div>
-        <label for="recipeName">Recipe name</label>
-        <input type="text" id="recipeName" name="Recipes" required>
+    <style>
+      .welcome-header {
+        background: linear-gradient(
+          to right,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          indigo,
+          violet
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+      }
+      .Recipe-Form-Container {
+        /* this was referenced, but not used */
+      }
+      .home-inputs {
+        display: flex;
+        gap: 10px;
+      }
+
+      .home-inputs label {
+        min-width: 150px;
+      }
+    </style>
+    <script>
+      function placeIngredient() {
+        console.error("placeIngredient() not implemented!");
+      }
+
+      function addRecipe() {
+        console.error("addRecipe() not implemented!");
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1 class="welcome-header">Welcome to our Recipe site!</h1>
+    <div class="Recipe-Form-Container">
+      <h2>Create New Recipe</h2>
+      <form id="recipeForm">
+        <div class="home-inputs">
+          <label for="recipeName">Recipe name</label>
+          <input type="text" id="recipeName" name="Recipes" required />
+        </div>
+        <div class="home-inputs">
+          <label for="RecipeIngredients">Ingredients</label>
+          <input
+            type="text"
+            id="RecipeIngredients"
+            name="Ingredients"
+            placeholder="Name of Ingredient"
+            required
+          />
+          <input
+            type="text"
+            id="Ingredients-Amount"
+            name="Ingredients"
+            placeholder="Amount Needed(Example: 1 Tablespoon of Vanilla)"
+            required
+          />
+        </div>
+        <div class="home-inputs">
+          <label for="recipeDescription">Recipe Description</label>
+          <input
+            type="text"
+            id="recipeDescription"
+            name="Description"
+            required
+          />
+        </div>
+        <div class="home-inputs">
+          <label for="recipeCategory">Recipe Category</label>
+          <input type="text" id="recipeCategory" name="Category" required />
+        </div>
+        <div class="home-inputs">
+          <label for="recipeRating">Recipe Rating</label>
+          <input type="text" id="recipeRating" name="Rating" required />
+        </div>
+      </form>
     </div>
-    <div>
-        <label for="RecipeIngredients">Ingredients</label>
-        <input type="text" id="RecipeIngredients" name="Ingredients" placeholder="Name of Ingredient" required>
-        <input type="text" id="Ingredients-Amount" name="Ingredients" placeholder="Amount Needed(Example: 1 Tablespoon of Vanilla" required>
+    <button type="button" class="add-btn" onclick="placeIngredient()">
+      + Place Ingredient
+    </button>
+    <div class="home-inputs">
+      <label for="recipe-steps">Steps</label>
+      <input type="text" id="recipe-steps" name="Steps" rows="12" />
     </div>
-    <div>
-        <label for="recipeDescription">Recipe Description</label>
-        <input type="text" id="recipeDescription" name="Description" required>
-    </div>
-    <div>
-        <label for="recipeCategory">Recipe Category</label>
-        <input type="text" id="recipeCategory" name="Category" required>
-    </div>
-    <div>
-        <label for="recipeRating">Recipe Rating</label>
-        <input type="text" id="recipeRating" name="Rating" required>
-    </div>
-    </div>
-<button type="button" class="add-btn" onclick="Place ingredient()">+ Place Ingredient</button>
-<div>
-    <label for="recipe-steps">Steps</label>
-    <input type="text" id="recipe-steps" name="Steps" rows="12">
-</div>
-<button type="button" class="Submit" onclick="Add Recipe()">+ Add Recipe</button>
-</div>
-</body>
+    <button type="button" class="Submit" onclick="addRecipe()">
+      + Add Recipe
+    </button>
+  </body>
 </html>

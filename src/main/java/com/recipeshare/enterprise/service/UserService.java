@@ -1,7 +1,6 @@
 package com.recipeshare.enterprise.service;
 
 import com.recipeshare.enterprise.dao.UserDAO;
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
 import org.springframework.stereotype.Service;
 

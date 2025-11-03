@@ -2,12 +2,12 @@ package com.recipeshare.enterprise;
 
 import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.service.IRecipeService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/recipes")
 public class RecipeController {
 
     private final IRecipeService recipeService;
@@ -16,32 +16,24 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping("/")
-    public String index() {
-        return "Home";
-    }
 
-    @GetMapping("/getAllRecipes")
-    @ResponseBody
+    @GetMapping
     public List<RecipeDTO> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
 
-    @GetMapping("/getRecipeById")
-    @ResponseBody
-    public RecipeDTO fetchById(@RequestParam int id) {
+    @GetMapping("/{id}")
+    public RecipeDTO fetchById(@PathVariable int id) {
         return recipeService.fetchById(id);
     }
 
-    @PostMapping("/saveRecipe")
-    @ResponseBody
+    @PostMapping
     public String saveRecipe(@RequestBody RecipeDTO recipeDTO) {
         return recipeService.saveRecipe(recipeDTO);
     }
 
-    @DeleteMapping("/deleteRecipeById")
-    @ResponseBody
-    public String deleteRecipeById(@RequestParam int id) {
+    @DeleteMapping("/{id}")
+    public String deleteRecipeById(@PathVariable int id) {
         return recipeService.deleteById(id);
     }
 }

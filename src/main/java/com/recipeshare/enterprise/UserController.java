@@ -1,15 +1,13 @@
 package com.recipeshare.enterprise;
 
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
-import com.recipeshare.enterprise.service.IRecipeService;
 import com.recipeshare.enterprise.service.IUserService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     private final IUserService userService;
@@ -18,33 +16,25 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/UserIndex")
-    public String index() {
-        return "UserIndex";
-    }
 
 
-    @GetMapping("/getAllUsers")
-    @ResponseBody
+    @GetMapping
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/getUserById")
-    @ResponseBody
-    public UserDTO fetchById(@RequestParam int id) {
+    @GetMapping("/{id}")
+    public UserDTO fetchById(@PathVariable int id) {
         return userService.fetchById(id);
     }
 
-    @PostMapping("/saveUser")
-    @ResponseBody
+    @PostMapping
     public String saveUser(@RequestBody UserDTO userDTO) {
         return userService.saveUser(userDTO);
     }
 
-    @DeleteMapping("/deleteUserById")
-    @ResponseBody
-    public String deleteUserById(@RequestParam int id) {
+    @DeleteMapping("/{id}")
+    public String deleteUserById(@PathVariable int id) {
         return userService.deleteUserById(id);
     }
 }
