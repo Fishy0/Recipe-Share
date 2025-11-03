@@ -54,9 +54,12 @@ public class UserDAO implements IUserDAO {
 
     private Users convertToEntity(UserDTO dto) {
         Users user = new Users();
+        user.setUserId(dto.getUserId());
         user.setUserName(dto.getUserName());
         user.setUserEmail(dto.getUserEmail());
         user.setUserPassword(dto.getUserPassword());
+        user.setNumberOfRecipes(dto.getNumberOfRecipes());
+        user.setProfileDescription(dto.getProfileDescription());
         return user;
     }
 }
