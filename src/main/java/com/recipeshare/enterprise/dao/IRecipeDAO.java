@@ -1,7 +1,6 @@
 package com.recipeshare.enterprise.dao;
 
 import com.recipeshare.enterprise.dto.RecipeDTO;
-import com.recipeshare.enterprise.entity.Recipe;
 
 import java.util.List;
 
@@ -10,4 +9,6 @@ public interface IRecipeDAO {
     RecipeDTO fetchById(int id);
     void deleteById(int id);
     void saveRecipe(RecipeDTO recipe);
+
+    List<RecipeDTO> getRecipesByCategory(String category);
 }

@@ -4,6 +4,7 @@ import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.service.IRecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -14,11 +15,6 @@ public class RecipeController {
 
     public RecipeController(IRecipeService recipeService) {
         this.recipeService = recipeService;
-    }
-
-    @RequestMapping("/")
-    public String index() {
-        return "Home";
     }
 
     @GetMapping("/getAllRecipes")
@@ -43,5 +39,12 @@ public class RecipeController {
     @ResponseBody
     public String deleteRecipeById(@RequestParam int id) {
         return recipeService.deleteById(id);
+    }
+
+    @GetMapping("/getRecipesByCategory")
+    public String getRecipesByCategory(@RequestParam String category, Model model) {
+        List<RecipeDTO> recipes = recipeService.getRecipesByCategory(category);
+        model.addAttribute("recipes", recipes);
+        return "SearchResultsPage";
     }
 }

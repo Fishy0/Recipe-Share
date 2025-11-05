@@ -38,6 +38,14 @@ public class RecipeDAO implements IRecipeDAO {
         repo.deleteById(id);
     }
 
+    @Override
+    public List<RecipeDTO> getRecipesByCategory(String category) {
+        List<Recipe> recipes = repo.findByRecipeCategory(category);
+        return recipes.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
 
     // DTO converter
     private RecipeDTO convertToDTO(Recipe recipe) {

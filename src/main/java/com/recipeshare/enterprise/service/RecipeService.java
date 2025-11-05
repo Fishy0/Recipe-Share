@@ -45,5 +45,10 @@ public class RecipeService implements IRecipeService {
             return "Recipe saved successfully";
         }
     }
+
+    public List<RecipeDTO> getRecipesByCategory(String category) {
+        return recipeDAO.getRecipesByCategory(category);
+    }
+
 }
 
