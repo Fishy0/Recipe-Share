@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recipe Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
-<h1 style="
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-">Welcome to our Recipe site!</h1>
+<div th:replace="fragments/topnav.html :: navbar">
+
+</div>
+<h1>Welcome to our Recipe site!</h1>
 <div class ="Recipe-Form-Container">
     <h2> Create New Recipe></h2>
     <form id="recipeForm"></form>
@@ -35,12 +37,12 @@
         <input type="text" id="recipeRating" name="Rating" required>
     </div>
     </div>
-<button type="button" class="add-btn" onclick="Place ingredient()">+ Place Ingredient</button>
+<button type="button" class="add-btn" onclick="PlaceIngredient()">+ Place Ingredient</button>
 <div>
     <label for="recipe-steps">Steps</label>
     <input type="text" id="recipe-steps" name="Steps" rows="12">
 </div>
-<button type="button" class="Submit" onclick="Add Recipe()">+ Add Recipe</button>
-</div>
+<button type="button" class="Submit" onclick="AddRecipe()">+ Add Recipe</button>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
