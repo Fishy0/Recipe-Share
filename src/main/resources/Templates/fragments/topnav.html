@@ -27,9 +27,18 @@
                 </form>
 
                 <!-- This should hopefully be on the righthand side -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../UserIndex.html">User</a>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" th:if="${session.userName != null}">
+                        <a class="nav-link btn btn-outline-primary rounded-pill px-3"
+                           th:href="@{'/profile/' + ${session.userName}}">
+                            <i class="bi bi-person-circle"></i>
+                            <span th:text="${session.userName}">User</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" th:if="${session.userName == null}">
+                        <a class="nav-link btn btn-outline-secondary rounded-pill px-3"
+                           th:href="@{/login}">Login</a>
                     </li>
                 </ul>
             </div>
