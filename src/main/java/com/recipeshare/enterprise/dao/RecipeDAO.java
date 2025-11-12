@@ -24,7 +24,7 @@ public class RecipeDAO implements IRecipeDAO {
                 .collect(Collectors.toList());
     }
     @Override
-    public RecipeDTO fetchById(int id) {
+    public RecipeDTO getRecipeById(int id) {
         Optional<Recipe> recipe = repo.findById(id);
         return recipe.map(this::convertToDTO).orElse(null);
     }

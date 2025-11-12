@@ -21,12 +21,12 @@ public class RecipeService implements IRecipeService {
     }
 
     @Override
-    public RecipeDTO fetchById(int id){
-        return recipeDAO.fetchById(id);
+    public RecipeDTO getRecipeById(int id){
+        return recipeDAO.getRecipeById(id);
     }
     @Override
     public String deleteById(int id) {
-        RecipeDTO recipe = recipeDAO.fetchById(id);
+        RecipeDTO recipe = recipeDAO.getRecipeById(id);
         if (recipe != null) {
             recipeDAO.deleteById(id);
             return "Recipe with id: " + id + " deleted";

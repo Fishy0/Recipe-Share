@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Recipe</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div th:replace="fragments/topnav.html :: navbar"></div>
+
+<div class="container mt-5">
+    <h1 th:text="${recipe.recipeName}">Recipe Name</h1>
+    <p><strong>Category:</strong> <span th:text="${recipe.recipeCategory}">Category</span></p>
+    <p><strong>Rating:</strong> <span th:text="${recipe.recipeRating}">Rating</span>/5</p>
+    <p><strong>Description:</strong></p>
+    <p th:text="${recipe.recipeDescription}">Description</p>
+    <p><strong>Ingredients:</strong></p>
+    <p th:text="${recipe.recipeIngredients}">Ingredients</p>
+
+    <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

@@ -39,7 +39,7 @@ public class RecipeController {
     @GetMapping("/getRecipeById")
     @ResponseBody
     public RecipeDTO fetchById(@RequestParam int id) {
-        return recipeService.fetchById(id);
+        return recipeService.getRecipeById(id);
     }
 
     /**
@@ -56,7 +56,7 @@ public class RecipeController {
     /**
      * Delete a recipe from the database.
      * @param id Unique identifier of the recipe to delete.
-     * @return A String stating whether the method was succesful or not.
+     * @return A String stating whether the method was successful or not.
      */
     @DeleteMapping("/deleteRecipeById")
     @ResponseBody
@@ -75,5 +75,12 @@ public class RecipeController {
         List<RecipeDTO> recipes = recipeService.getRecipesByCategory(category);
         model.addAttribute("recipes", recipes);
         return "SearchResultsPage";
+    }
+
+    @GetMapping("/recipe/{id}")
+    public String viewRecipe(@PathVariable("id") int id, Model model) {
+        RecipeDTO recipe = recipeService.getRecipeById(id);
+        model.addAttribute("recipe", recipe);
+        return "recipeDetail";
     }
 }

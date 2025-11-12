@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IRecipeDAO {
     List<RecipeDTO> getAllRecipes();
-    RecipeDTO fetchById(int id);
+    RecipeDTO getRecipeById(int id);
     void deleteById(int id);
     void saveRecipe(RecipeDTO recipe);
 

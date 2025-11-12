@@ -5,44 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recipe Home Page</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <link href="../static/css/style.css" rel="stylesheet">
 </head>
 <body>
-<div th:replace="fragments/topnav.html :: navbar">
+<div th:replace="fragments/topnav.html :: navbar"></div>
 
-</div>
-<h1>Welcome to our Recipe site!</h1>
-<div class ="Recipe-Form-Container">
-    <h2> Create New Recipe></h2>
-    <form id="recipeForm"></form>
-    <div>
-        <label for="recipeName">Recipe name</label>
-        <input type="text" id="recipeName" name="Recipes" required>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">All Recipes</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" th:each="recipe : ${recipes}">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${recipe.recipeName}">Recipe Name</h5>
+                        <p class="card-text" th:text="${recipe.recipeDescription}">
+                            Recipe description goes here.
+                        </p>
+                        <p class="card-text">
+                            <strong>Ingredients:</strong>
+                            <span th:text="${recipe.recipeIngredients}">Ingredient list</span>
+                        </p>
+                    </div>
+
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <small class="text-muted" th:text="'Category: ' + ${recipe.recipeCategory}">Category</small>
+                        <small class="text-muted" th:text="'Rating: ' + ${recipe.recipeRating} + '/5'">Rating</small>
+                        <a th:href="@{'/recipe/' + ${recipe.recipeId}}" class="btn btn-primary mt-2">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="RecipeIngredients">Ingredients</label>
-        <input type="text" id="RecipeIngredients" name="Ingredients" placeholder="Name of Ingredient" required>
-        <input type="text" id="Ingredients-Amount" name="Ingredients" placeholder="Amount Needed(Example: 1 Tablespoon of Vanilla" required>
-    </div>
-    <div>
-        <label for="recipeDescription">Recipe Description</label>
-        <input type="text" id="recipeDescription" name="Description" required>
-    </div>
-    <div>
-        <label for="recipeCategory">Recipe Category</label>
-        <input type="text" id="recipeCategory" name="Category" required>
-    </div>
-    <div>
-        <label for="recipeRating">Recipe Rating</label>
-        <input type="text" id="recipeRating" name="Rating" required>
-    </div>
-    </div>
-<button type="button" class="add-btn" onclick="PlaceIngredient()">+ Place Ingredient</button>
-<div>
-    <label for="recipe-steps">Steps</label>
-    <input type="text" id="recipe-steps" name="Steps" rows="12">
-</div>
-<button type="button" class="Submit" onclick="AddRecipe()">+ Add Recipe</button>
+
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
