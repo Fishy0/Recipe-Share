@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create User</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        .create-container {
+            margin-top: 20px; /* 20-pixel gap from the top */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container create-container d-flex justify-content-center">
+    <div class="card p-4 shadow-sm" style="width: 100%; max-width: 400px;">
+        <h3 class="card-title text-center mb-3">Create Account</h3>
+
+        <form th:action="@{/createUser}" method="post">
+            <div class="mb-3">
+                <label for="userName" class="form-label">Username</label>
+                <input type="text" class="form-control" id="userName" name="userName" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="userEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="userPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="userPassword" name="userPassword" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Create Account</button>
+        </form>
+
+        <div class="mt-3 text-center">
+            <a th:href="@{/login}">Back to Login</a>
+        </div>
+
+        <div class="mt-3 text-center text-success" th:text="${success}"></div>
+    </div>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
