@@ -9,6 +9,6 @@ public interface IRecipeService {
     RecipeDTO fetchById(int id);
     String deleteById(int id);
     String saveRecipe(RecipeDTO recipe);
-
     List<RecipeDTO> getRecipesByCategory(String category);
+
 }

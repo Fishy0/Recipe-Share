@@ -49,6 +49,5 @@ public class RecipeService implements IRecipeService {
     public List<RecipeDTO> getRecipesByCategory(String category) {
         return recipeDAO.getRecipesByCategory(category);
     }
-
 }
 

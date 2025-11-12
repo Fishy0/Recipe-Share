@@ -46,7 +46,6 @@ public class RecipeDAO implements IRecipeDAO {
                 .collect(Collectors.toList());
     }
 
-
     // DTO converter
     private RecipeDTO convertToDTO(Recipe recipe) {
         return new RecipeDTO(
