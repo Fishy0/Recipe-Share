@@ -1,11 +1,12 @@
 package com.recipeshare.enterprise.service;
 
 import com.recipeshare.enterprise.dao.UserDAO;
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
+import com.recipeshare.enterprise.entity.Users;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
@@ -45,6 +46,14 @@ public class UserService implements IUserService {
             userDAO.saveUser(userDTO);
             return "User saved successfully";
         }
+    }
+
+    public boolean login(String userName, String userPassword) {
+        return userDAO.validateUser(userName, userPassword);
+    }
+
+    public Optional<Users> getUserByUsername(String userName) {
+        return userDAO.findByUserName(userName);
     }
 
 }

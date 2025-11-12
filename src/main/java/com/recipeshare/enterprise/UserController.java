@@ -1,11 +1,17 @@
 package com.recipeshare.enterprise;
 
+import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
+import com.recipeshare.enterprise.entity.Users;
+import com.recipeshare.enterprise.service.IRecipeService;
 import com.recipeshare.enterprise.service.IUserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
     This controller provides methods for accessing and modifying User data.
@@ -15,9 +21,11 @@ import java.util.List;
 public class UserController {
 
     private final IUserService userService;
+    private final IRecipeService recipeService;
 
-    public UserController(IUserService userService) {
+    public UserController(IUserService userService, IRecipeService recipeService) {
         this.userService = userService;
+        this.recipeService = recipeService;
     }
 
     @RequestMapping("/UserIndex")
@@ -67,5 +75,75 @@ public class UserController {
     @ResponseBody
     public String deleteUserById(@RequestParam int id) {
         return userService.deleteUserById(id);
+    }
+
+    @GetMapping("/login")
+    public String loginForm() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String loginSubmit(@RequestParam String userName,
+                              @RequestParam String userPassword,
+                              Model model,
+                              HttpSession session) {
+
+        if (userService.login(userName, userPassword)) {
+            session.setAttribute("userName", userName);
+            return "redirect:/home";
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "login";
+        }
+    }
+    @GetMapping("/home")
+    public String home(HttpSession session, Model model) {
+        if (session.getAttribute("userName") == null) {
+            return "redirect:/login";
+        }
+
+        List<RecipeDTO> recipes = recipeService.getAllRecipes();
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("userName", session.getAttribute("userName"));
+        return "home";
+    }
+
+    @GetMapping("/profile/{userName}")
+    public String viewProfile(@PathVariable String userName, Model model, HttpSession session) {
+        if (session.getAttribute("userName") == null) {
+            return "redirect:/login";
+        }
+
+        Optional<Users> userOpt = userService.getUserByUsername(userName);
+
+        if (userOpt.isEmpty()) {
+            model.addAttribute("error", "User not found");
+            return "error"; // Or redirect somewhere else if you prefer
+        }
+
+        model.addAttribute("user", userOpt.get());
+        return "profile"; // profile.html
+    }
+
+    @GetMapping("/createUser")
+    public String createUserForm() {
+        return "createUser";
+    }
+
+    @PostMapping("/createUser")
+    public String DoCreateUser(@RequestParam String userName,
+                               @RequestParam String userEmail,
+                               @RequestParam String userPassword,
+                               Model model) {
+
+        UserDTO newUser = new UserDTO();
+        newUser.setUserName(userName);
+        newUser.setUserEmail(userEmail);
+        newUser.setUserPassword(userPassword);
+
+        userService.saveUser(newUser); // reuse existing service method
+
+        model.addAttribute("success", "Account created successfully! Please log in.");
+        return "login"; // redirect back to login page
     }
 }

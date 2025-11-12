@@ -1,8 +1,6 @@
 package com.recipeshare.enterprise.dao;
 
-import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.dto.UserDTO;
-import com.recipeshare.enterprise.entity.Recipe;
 import com.recipeshare.enterprise.entity.Users;
 import com.recipeshare.enterprise.repository.UserRepository;
 import org.springframework.stereotype.Repository;
@@ -38,6 +36,15 @@ public class UserDAO implements IUserDAO {
 
     public void deleteById(int id) {
         repo.deleteById(id);
+    }
+
+    @Override
+    public boolean validateUser(String userName, String userPassword) {
+        return repo.findByUserNameAndUserPassword(userName, userPassword).isPresent();
+    }
+
+    public Optional<Users> findByUserName(String userName) {
+        return repo.findByUserName(userName);
     }
 
     // DTO converter \\
