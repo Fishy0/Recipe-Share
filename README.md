@@ -1,3 +1,13 @@
+# 0. QuickStart
+For fellow classmates, a simple download of the code and running of main to the IDE will run the program. Navigate to localhost:8080 for the home page. Other pages include:
+
+localhost:8080/getAllUsers
+
+localhost:8080/UserIndex
+
+localhost:8080/getAllRecipes
+
+
 # 1. Introduction
 ## Recipe Sharing & Meal Planning Platform
 We decided on a Recipe and Meal Sharing "Platform" which would allow users to create and share recipes for meals much like a social media platform where recipes can be posted, tagged, and reviewed by other users. We're looking to put in a bit of work into the UI to make it look a bit like X/Twitter, where one can scroll down a list of recipes from a user.
