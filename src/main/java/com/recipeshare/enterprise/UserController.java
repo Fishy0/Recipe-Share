@@ -118,11 +118,11 @@ public class UserController {
 
         if (userOpt.isEmpty()) {
             model.addAttribute("error", "User not found");
-            return "error"; // Or redirect somewhere else if you prefer
+            return "error";
         }
 
         model.addAttribute("user", userOpt.get());
-        return "profile"; // profile.html
+        return "profile";
     }
 
     @GetMapping("/createUser")
@@ -144,6 +144,6 @@ public class UserController {
         userService.saveUser(newUser); // reuse existing service method
 
         model.addAttribute("success", "Account created successfully! Please log in.");
-        return "login"; // redirect back to login page
+        return "login";
     }
 }
