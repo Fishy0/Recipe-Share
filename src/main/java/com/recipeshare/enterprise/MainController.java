@@ -79,7 +79,7 @@ public class MainController {
             return "redirect:/login";
         }
 
-        List<RecipeDTO> recipes = recipeService.getAllRecipes();
+        List<RecipeDTO> recipes = recipeService.getAllRecipesSortedByLikes();
         model.addAttribute("recipes", recipes);
         model.addAttribute("userName", session.getAttribute("userName"));
         return "home";
@@ -177,6 +177,14 @@ public class MainController {
 
         model.addAttribute("error", result);
         return "createRecipe";
+    }
+
+    @PostMapping("/recipe/like/{id}")
+    public String likeRecipe(@PathVariable int id) {
+
+        recipeService.incrementLikes(id);
+
+        return "redirect:/recipe/" + id;
     }
 
 

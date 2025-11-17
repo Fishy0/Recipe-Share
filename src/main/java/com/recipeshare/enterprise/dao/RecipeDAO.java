@@ -4,6 +4,7 @@ import com.recipeshare.enterprise.dto.RecipeDTO;
 import com.recipeshare.enterprise.entity.Recipe;
 import com.recipeshare.enterprise.repository.RecipeRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +42,20 @@ public class RecipeDAO implements IRecipeDAO {
     @Override
     public List<RecipeDTO> getRecipesByCategory(String category) {
         List<Recipe> recipes = repo.findByRecipeCategory(category);
+        return recipes.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void incrementLikes(int recipeId) {
+        repo.incrementLikes(recipeId);
+    }
+
+    @Override
+    public List<RecipeDTO> getAllRecipesSortedByLikes() {
+        List<Recipe> recipes = repo.findAllByOrderByRecipeLikesDesc();
         return recipes.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());

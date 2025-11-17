@@ -19,7 +19,11 @@
     <p><strong>Ingredients:</strong></p>
     <p th:text="${recipe.recipeIngredients}">Ingredients</p>
 
-    <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+    <a href="/home" class="btn btn-secondary mt-3">Back to Home</a>
+
+    <form th:action="@{/recipe/like/{id}(id=${recipe.recipeId})}" method="post">
+        <button class="btn btn-primary mt-3">👍 Like</button>
+    </form>
 </div>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

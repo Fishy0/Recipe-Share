@@ -1,6 +1,7 @@
 package com.recipeshare.enterprise.dao;
 
 import com.recipeshare.enterprise.dto.RecipeDTO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,4 +12,9 @@ public interface IRecipeDAO {
     void saveRecipe(RecipeDTO recipe);
 
     List<RecipeDTO> getRecipesByCategory(String category);
+
+    @Transactional
+    void incrementLikes(int recipeId);
+
+    List<RecipeDTO> getAllRecipesSortedByLikes();
 }

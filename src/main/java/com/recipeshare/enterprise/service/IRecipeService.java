@@ -10,4 +10,8 @@ public interface IRecipeService {
     String deleteById(int id);
     String saveRecipe(RecipeDTO recipe);
     List<RecipeDTO> getRecipesByCategory(String category);
+
+    void incrementLikes(int id);
+
+    List<RecipeDTO> getAllRecipesSortedByLikes();
 }

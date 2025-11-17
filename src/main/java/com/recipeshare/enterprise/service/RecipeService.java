@@ -46,6 +46,14 @@ public class RecipeService implements IRecipeService {
         }
     }
 
+    public void incrementLikes(int recipeId) {
+        recipeDAO.incrementLikes(recipeId);
+    }
+
+    public List<RecipeDTO> getAllRecipesSortedByLikes() {
+        return recipeDAO.getAllRecipesSortedByLikes();
+    }
+
     public List<RecipeDTO> getRecipesByCategory(String category) {
         return recipeDAO.getRecipesByCategory(category);
     }
