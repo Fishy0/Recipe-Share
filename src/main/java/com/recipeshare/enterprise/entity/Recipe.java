@@ -1,9 +1,6 @@
 package com.recipeshare.enterprise.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -15,11 +12,12 @@ public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recipeId;
+    private String recipeCreatedBy;
     private String recipeName;
     private String recipeDescription;
     private String recipeIngredients;
     private String recipeCategory;
-    private short recipeRating;
 
-
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    private int recipeLikes = 0;
 }

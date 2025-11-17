@@ -50,11 +50,12 @@ public class RecipeDAO implements IRecipeDAO {
     private RecipeDTO convertToDTO(Recipe recipe) {
         return new RecipeDTO(
                 recipe.getRecipeId(),
+                recipe.getRecipeCreatedBy(),
                 recipe.getRecipeName(),
                 recipe.getRecipeDescription(),
                 recipe.getRecipeIngredients(),
                 recipe.getRecipeCategory(),
-                recipe.getRecipeRating()
+                recipe.getRecipeLikes()
         );
     }
 
@@ -62,10 +63,11 @@ public class RecipeDAO implements IRecipeDAO {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(dto.getRecipeId());
         recipe.setRecipeName(dto.getRecipeName());
+        recipe.setRecipeCreatedBy(dto.getRecipeCreatedBy());
         recipe.setRecipeDescription(dto.getRecipeDescription());
         recipe.setRecipeIngredients(dto.getRecipeIngredients());
         recipe.setRecipeCategory(dto.getRecipeCategory());
-        recipe.setRecipeRating(dto.getRecipeRating());
+        recipe.setRecipeLikes(dto.getRecipeLikes());
         return recipe;
     }
 }
