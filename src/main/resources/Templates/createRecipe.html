@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Create Recipe</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div th:replace="fragments/topnav.html :: navbar"></div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Create New Recipe</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/createRecipe}" method="post">
+
+                        <!-- Recipe Name -->
+                        <div class="mb-3">
+                            <label for="recipeName" class="form-label">Recipe Name *</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="recipeName"
+                                   name="recipeName"
+                                   required
+                                   placeholder="Enter recipe name">
+                        </div>
+
+                        <!-- Recipe Description -->
+                        <div class="mb-3">
+                            <label for="recipeDescription" class="form-label">Description *</label>
+                            <textarea class="form-control"
+                                      id="recipeDescription"
+                                      name="recipeDescription"
+                                      rows="3"
+                                      required
+                                      placeholder="Describe your recipe"></textarea>
+                        </div>
+
+                        <!-- Recipe Ingredients -->
+                        <div class="mb-3">
+                            <label for="recipeIngredients" class="form-label">Ingredients *</label>
+                            <textarea class="form-control"
+                                      id="recipeIngredients"
+                                      name="recipeIngredients"
+                                      rows="5"
+                                      required
+                                      placeholder="List ingredients (comma-separated)"></textarea>
+                        </div>
+
+                        <!-- Recipe Category -->
+                        <div class="mb-3">
+                            <label for="recipeCategory" class="form-label">Category *</label>
+                            <select class="form-select" id="recipeCategory" name="recipeCategory" required>
+                                <option value="">Choose a category...</option>
+                                <option value="Breakfast">Breakfast</option>
+                                <option value="Lunch">Lunch</option>
+                                <option value="Dinner">Dinner</option>
+                                <option value="Dessert">Dessert</option>
+                                <option value="Appetizer">Appetizer</option>
+                                <option value="Snack">Snack</option>
+                                <option value="Beverage">Beverage</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success">Create Recipe</button>
+                            <a th:href="@{/home}" class="btn btn-secondary">Cancel</a>
+                        </div>
+
+                        <!-- Error/Success Messages -->
+                        <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
+                            <span th:text="${error}"></span>
+                        </div>
+                        <div th:if="${success}" class="alert alert-success mt-3" role="alert">
+                            <span th:text="${success}"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

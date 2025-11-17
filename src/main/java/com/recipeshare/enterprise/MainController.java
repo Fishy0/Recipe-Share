@@ -139,6 +139,48 @@ public class MainController {
         return "recipeDetail";
     }
 
+    @GetMapping("/createRecipe")
+    public String createRecipeForm(HttpSession session, Model model) {
+        if (!isLoggedIn(session)) {
+            return "redirect:/login";
+        }
+        return "createRecipe";
+    }
+
+    @PostMapping("/createRecipe")
+    public String createRecipe(@RequestParam String recipeName,
+                               @RequestParam String recipeDescription,
+                               @RequestParam String recipeIngredients,
+                               @RequestParam String recipeCategory,
+                               HttpSession session,
+                               Model model) {
+
+        if (!isLoggedIn(session)) {
+            return "redirect:/login";
+        }
+
+        RecipeDTO recipeDTO = new RecipeDTO();
+        recipeDTO.setRecipeName(recipeName);
+        recipeDTO.setRecipeDescription(recipeDescription);
+        recipeDTO.setRecipeIngredients(recipeIngredients);
+        recipeDTO.setRecipeCategory(recipeCategory);
+        recipeDTO.setRecipeLikes(0);
+
+        String userName = (String) session.getAttribute("userName");
+        recipeDTO.setRecipeCreatedBy(userName);
+
+        String result = recipeService.saveRecipe(recipeDTO);
+
+        if (result.contains("successfully")) {
+            return "redirect:/home";
+        }
+
+        model.addAttribute("error", result);
+        return "createRecipe";
+    }
+
+
+    // helper function
     private boolean isLoggedIn(HttpSession session) {
         return session.getAttribute("userName") != null;
     }
