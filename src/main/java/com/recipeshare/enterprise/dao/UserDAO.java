@@ -24,7 +24,7 @@ public class UserDAO implements IUserDAO {
                 .collect(Collectors.toList());
     }
 
-    public UserDTO fetchById(int id) {
+    public UserDTO getUserById(int id) {
         Optional<Users> users = repo.findById(id);
         return users.map(this::convertToDTO).orElse(null);
     }

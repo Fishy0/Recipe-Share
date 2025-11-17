@@ -23,12 +23,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO fetchById(int id){
-        return userDAO.fetchById(id);
+    public UserDTO getUserById(int id){
+        return userDAO.getUserById(id);
     }
     @Override
     public String deleteUserById(int id) {
-        UserDTO user = userDAO.fetchById(id);
+        UserDTO user = userDAO.getUserById(id);
         if (user != null) {
             userDAO.deleteById(id);
             return "User with id: " + id + " deleted";

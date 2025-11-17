@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IUserDAO {
     List<UserDTO> getAllUsers();
-    UserDTO fetchById(int id);
+    UserDTO getUserById(int id);
     void deleteById(int id);
     void saveUser(UserDTO user);
 

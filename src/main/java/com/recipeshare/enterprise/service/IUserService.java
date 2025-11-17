@@ -8,9 +8,10 @@ import java.util.Optional;
 
 public interface IUserService {
     List<UserDTO> getAllUsers();
-    UserDTO fetchById(int id);
+    UserDTO getUserById(int id);
     String deleteUserById(int id);
     String saveUser(UserDTO user);
     boolean login(String userName, String userPassword);
     Optional<Users> getUserByUsername(String userName);
+
 }
