@@ -54,6 +54,10 @@ public class RecipeService implements IRecipeService {
         return recipeDAO.getAllRecipesSortedByLikes();
     }
 
+    public List<RecipeDTO> getRecipesByUser(String userName) {
+        return recipeDAO.getRecipesByUser(userName);
+    }
+
     public List<RecipeDTO> getRecipesByCategory(String category) {
         return recipeDAO.getRecipesByCategory(category);
     }

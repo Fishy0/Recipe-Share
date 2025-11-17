@@ -19,11 +19,15 @@
     <p><strong>Ingredients:</strong></p>
     <p th:text="${recipe.recipeIngredients}">Ingredients</p>
 
-    <a href="/home" class="btn btn-secondary mt-3">Back to Home</a>
+    <div class="d-flex gap-3 mt-3">
 
-    <form th:action="@{/recipe/like/{id}(id=${recipe.recipeId})}" method="post">
-        <button class="btn btn-primary mt-3">👍 Like</button>
-    </form>
+        <a href="/home" class="btn btn-secondary">Back to Home</a>
+
+        <form th:action="@{/recipe/like/{id}(id=${recipe.recipeId})}" method="post" class="m-0">
+            <button class="btn btn-primary">👍 Like</button>
+        </form>
+
+    </div>
 </div>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>

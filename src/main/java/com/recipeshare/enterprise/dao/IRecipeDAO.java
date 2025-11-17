@@ -17,4 +17,6 @@ public interface IRecipeDAO {
     void incrementLikes(int recipeId);
 
     List<RecipeDTO> getAllRecipesSortedByLikes();
+
+    List<RecipeDTO> getRecipesByUser(String userName);
 }

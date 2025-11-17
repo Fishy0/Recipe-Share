@@ -14,4 +14,6 @@ public interface IRecipeService {
     void incrementLikes(int id);
 
     List<RecipeDTO> getAllRecipesSortedByLikes();
+
+    List<RecipeDTO> getRecipesByUser(String userName);
 }

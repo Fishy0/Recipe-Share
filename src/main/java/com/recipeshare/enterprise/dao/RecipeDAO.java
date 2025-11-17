@@ -61,6 +61,14 @@ public class RecipeDAO implements IRecipeDAO {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<RecipeDTO> getRecipesByUser(String userName) {
+        List<Recipe> recipes = repo.findByRecipeCreatedBy(userName);
+        return recipes.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     // DTO converter
     private RecipeDTO convertToDTO(Recipe recipe) {
         return new RecipeDTO(

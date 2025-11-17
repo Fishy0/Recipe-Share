@@ -97,8 +97,11 @@ public class MainController {
             model.addAttribute("error", "User not found");
             return "error";
         }
-
         model.addAttribute("user", userOpt.get());
+
+        List<RecipeDTO> recipes = recipeService.getRecipesByUser(userName);
+        model.addAttribute("recipes", recipes);
+
         return "profile";
     }
 

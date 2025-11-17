@@ -17,4 +17,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Transactional
     @Query("UPDATE Recipe r SET r.recipeLikes = r.recipeLikes + 1 WHERE r.recipeId = :id")
     void incrementLikes(@Param("id") int id);
+
+    List<Recipe> findByRecipeCreatedBy(String userName);
 }

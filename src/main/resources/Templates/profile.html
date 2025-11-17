@@ -10,7 +10,8 @@
 <div th:replace="fragments/topnav.html :: navbar"></div>
 
 <div class="container mt-5">
-    <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+
+    <div class="card mx-auto shadow-sm mb-5" style="max-width: 500px;">
         <div class="card-body text-center">
             <h3 th:text="${user.userName}">Username</h3>
             <p class="text-muted" th:text="${user.userEmail}">user@example.com</p>
@@ -19,6 +20,35 @@
             <a th:href="@{/home}" class="btn btn-outline-primary mt-2">Back to Home</a>
         </div>
     </div>
+
+    <h4 th:text="'Recipes by ' + ${user.userName}">Your Recipes</h4>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-2" th:if="${recipes.size() > 0}">
+        <div class="col" th:each="recipe : ${recipes}">
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${recipe.recipeName}">Recipe Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="'By ' + ${recipe.recipeCreatedBy}">By User</h6>
+                    <p class="card-text" th:text="${recipe.recipeDescription}">Recipe description goes here.</p>
+                    <p class="card-text">
+                        <strong>Ingredients:</strong>
+                        <span th:text="${recipe.recipeIngredients}">Ingredient list</span>
+                    </p>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <small class="text-muted" th:text="'Category: ' + ${recipe.recipeCategory}">Category</small>
+                    <small class="text-muted" th:text="'Likes: ' + ${recipe.recipeLikes}">Likes</small>
+                    <a th:href="@{'/recipe/' + ${recipe.recipeId}}" class="btn btn-primary mt-2">View Recipe</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <p th:if="${recipes.size() == 0}" class="text-muted mt-3">This user has not created any recipes yet.</p>
+
 </div>
 
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
