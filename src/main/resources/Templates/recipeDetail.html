@@ -11,8 +11,9 @@
 
 <div class="container mt-5">
     <h1 th:text="${recipe.recipeName}">Recipe Name</h1>
+    <p><strong>Create By:</strong> <span th:text="${recipe.recipeCreatedBy}">Created By</span></p>
     <p><strong>Category:</strong> <span th:text="${recipe.recipeCategory}">Category</span></p>
-    <p><strong>Rating:</strong> <span th:text="${recipe.recipeRating}">Rating</span>/5</p>
+    <p><strong>Likes:</strong> <span th:text="${recipe.recipeLikes}">Likes</span></p>
     <p><strong>Description:</strong></p>
     <p th:text="${recipe.recipeDescription}">Description</p>
     <p><strong>Ingredients:</strong></p>
