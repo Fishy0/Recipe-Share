@@ -102,6 +102,9 @@ public class MainController {
         List<RecipeDTO> recipes = recipeService.getRecipesByUser(userName);
         model.addAttribute("recipes", recipes);
 
+        int likes = calculateTotalLikes(recipes);
+        model.addAttribute("likes", likes);
+
         return "profile";
     }
 
@@ -191,8 +194,17 @@ public class MainController {
     }
 
 
-    // helper function
+    // helper functions
     private boolean isLoggedIn(HttpSession session) {
         return session.getAttribute("userName") != null;
+    }
+    public int calculateTotalLikes(List<RecipeDTO> recipes) {
+        int likes = 0;
+
+        for (RecipeDTO recipe : recipes) {
+            likes += recipe.getRecipeLikes();
+        }
+
+        return likes;
     }
 }

@@ -13,5 +13,4 @@ public interface IUserService {
     String saveUser(UserDTO user);
     boolean login(String userName, String userPassword);
     Optional<Users> getUserByUsername(String userName);
-
 }

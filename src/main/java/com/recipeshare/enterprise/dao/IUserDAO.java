@@ -11,8 +11,6 @@ public interface IUserDAO {
     UserDTO getUserById(int id);
     void deleteById(int id);
     void saveUser(UserDTO user);
-
     boolean validateUser(String userName, String userPassword);
-
     Optional<Users> findByUserName(String userName);
 }

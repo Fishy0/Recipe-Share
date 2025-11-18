@@ -47,7 +47,7 @@ public class UserDAO implements IUserDAO {
         return repo.findByUserName(userName);
     }
 
-    // DTO converter \\
+    // Conversion methods
     private UserDTO convertToDTO(Users user) {
         return new UserDTO(
                 user.getUserId(),

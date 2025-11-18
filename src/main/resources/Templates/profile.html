@@ -14,8 +14,12 @@
     <div class="card mx-auto shadow-sm mb-5" style="max-width: 500px;">
         <div class="card-body text-center">
             <h3 th:text="${user.userName}">Username</h3>
-            <p class="text-muted" th:text="${user.userEmail}">user@example.com</p>
-            <p th:text="${user.profileDescription}">This is the user's bio.</p>
+
+            <p class="text-muted" th:text="'Email: ' + ${user.userEmail}"></p>
+
+            <p th:text="'Bio: ' + ${user.profileDescription}"></p>
+
+            <strong th:text="'Total Likes: ' + ${likes}"></strong>
             <hr>
             <a th:href="@{/home}" class="btn btn-outline-primary mt-2">Back to Home</a>
         </div>
