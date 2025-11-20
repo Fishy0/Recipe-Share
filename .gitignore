@@ -8,3 +8,4 @@
 *.jar
 *.war
 *.db
+application.properties

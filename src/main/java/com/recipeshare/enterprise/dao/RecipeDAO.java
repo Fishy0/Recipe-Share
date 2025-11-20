@@ -30,9 +30,14 @@ public class RecipeDAO implements IRecipeDAO {
         return recipe.map(this::convertToDTO).orElse(null);
     }
     @Override
-    public void saveRecipe(RecipeDTO recipe) {
+    public Recipe saveRecipe(RecipeDTO recipe) {
         Recipe recipeEntity = convertToEntity(recipe);
-        repo.save(recipeEntity);
+        return repo.save(recipeEntity);
+    }
+
+    @Override
+    public void updateRecipe(Recipe recipe) {
+        repo.save(recipe);
     }
 
     public void deleteById(int id) {

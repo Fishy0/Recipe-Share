@@ -19,6 +19,17 @@
             <div class="col" th:each="recipe : ${recipes}">
                 <div class="card h-100 shadow-sm">
 
+                    <img th:if="${recipe.recipeImageUrl != null}"
+                         th:src="${recipe.recipeImageUrl}"
+                         class="card-img-top"
+                         alt="Recipe Image"
+                         style="height: 200px; object-fit: cover;">
+                    <div th:if="${recipe.recipeImageUrl == null}"
+                         class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                         style="height: 200px;">
+                        <span class="text-muted">No image</span>
+                    </div>
+
                     <div class="card-body">
                         <h5 class="card-title" th:text="${recipe.recipeName}">Recipe Name</h5>
                         <h6 class="card-subtitle mb-2 text-muted" th:text="'By ' + ${recipe.recipeCreatedBy}">By User</h6>

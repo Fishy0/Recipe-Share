@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class RecipeController {
     }
 
     @GetMapping("/")
-    public String showHomePage(HttpSession session, Model model) {
+    public String showHomePage(HttpSession session) {
         if (!isLoggedIn(session)) {
             return "redirect:/login";
         }
@@ -48,6 +49,7 @@ public class RecipeController {
                                @RequestParam String recipeDescription,
                                @RequestParam String recipeIngredients,
                                @RequestParam String recipeCategory,
+                               @RequestParam(required = false) MultipartFile recipeImage,
                                HttpSession session,
                                Model model) {
 
@@ -65,7 +67,7 @@ public class RecipeController {
         String userName = (String) session.getAttribute("userName");
         recipeDTO.setRecipeCreatedBy(userName);
 
-        String result = recipeService.saveRecipe(recipeDTO);
+        String result = recipeService.saveRecipe(recipeDTO, recipeImage);
 
         if (result.contains("successfully")) {
             return "redirect:/home";
