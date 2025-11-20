@@ -17,6 +17,7 @@ public class Recipe {
     private String recipeDescription;
     private String recipeIngredients;
     private String recipeCategory;
+    private String imageUrl;
 
     @Column(nullable = false, columnDefinition = "integer default 0")
     private int recipeLikes = 0;

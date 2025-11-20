@@ -78,7 +78,8 @@ public class RecipeDAO implements IRecipeDAO {
                 recipe.getRecipeDescription(),
                 recipe.getRecipeIngredients(),
                 recipe.getRecipeCategory(),
-                recipe.getRecipeLikes()
+                recipe.getRecipeLikes(),
+                recipe.getImageUrl()
         );
     }
 
@@ -91,6 +92,7 @@ public class RecipeDAO implements IRecipeDAO {
         recipe.setRecipeIngredients(dto.getRecipeIngredients());
         recipe.setRecipeCategory(dto.getRecipeCategory());
         recipe.setRecipeLikes(dto.getRecipeLikes());
+        recipe.setImageUrl(dto.getRecipeImageUrl());
         return recipe;
     }
 }
