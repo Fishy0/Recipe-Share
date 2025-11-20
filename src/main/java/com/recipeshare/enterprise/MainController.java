@@ -52,10 +52,7 @@ public class MainController {
         if (!isLoggedIn(session)) {
             return "redirect:/login";
         }
-
-        List<RecipeDTO> recipes = recipeService.getAllRecipes();
-        model.addAttribute("recipes", recipes);
-        return "Home";
+        return "redirect:/home";
     }
 
     @PostMapping("/login")
