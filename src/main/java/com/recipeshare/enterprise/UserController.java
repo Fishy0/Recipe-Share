@@ -47,6 +47,7 @@ public class UserController {
                               Model model,
                               HttpSession session) {
 
+        // if login is successful set userName in session
         if (userService.login(userName, userPassword)) {
             session.setAttribute("userName", userName);
             return "redirect:/home";
@@ -64,6 +65,7 @@ public class UserController {
 
         Optional<Users> userOpt = userService.getUserByUsername(userName);
 
+        // if the optional is empty, that user doesn't exist
         if (userOpt.isEmpty()) {
             model.addAttribute("error", "User not found");
             return "error";

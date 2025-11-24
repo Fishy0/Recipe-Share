@@ -74,7 +74,7 @@ public class RecipeDAO implements IRecipeDAO {
                 .collect(Collectors.toList());
     }
 
-    // DTO converter
+    // convert from entity to DTO
     private RecipeDTO convertToDTO(Recipe recipe) {
         return new RecipeDTO(
                 recipe.getRecipeId(),
@@ -87,7 +87,7 @@ public class RecipeDAO implements IRecipeDAO {
                 recipe.getImageUrl()
         );
     }
-
+    // convert from DTO to entity
     private Recipe convertToEntity(RecipeDTO dto) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(dto.getRecipeId());

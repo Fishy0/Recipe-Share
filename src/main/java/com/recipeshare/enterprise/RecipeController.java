@@ -64,6 +64,7 @@ public class RecipeController {
         recipeDTO.setRecipeCategory(recipeCategory);
         recipeDTO.setRecipeLikes(0);
 
+        // get the logged in userName from the session and set createdBy with it
         String userName = (String) session.getAttribute("userName");
         recipeDTO.setRecipeCreatedBy(userName);
 
@@ -105,6 +106,7 @@ public class RecipeController {
         return "SearchResultsPage";
     }
 
+    // get all recipes and sort them by likes
     @GetMapping("/home")
     public String home(HttpSession session, Model model) {
         if (!isLoggedIn(session)) {
@@ -117,6 +119,7 @@ public class RecipeController {
         return "home";
     }
 
+    // helper function to determine if user is logged in
     private boolean isLoggedIn(HttpSession session) {
         return session.getAttribute("userName") != null;
     }
