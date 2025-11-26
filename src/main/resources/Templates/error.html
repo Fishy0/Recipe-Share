@@ -2,14 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Error</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        .error-box { border: 1px solid #ff4d4f; padding: 20px; background-color: #fff1f0; display: inline-block; }
-        h1 { color: #ff4d4f; }
-        body {
-        background-color: #808080
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
 </head>
 <body>
 
@@ -21,7 +15,7 @@
         <p th:text="${error}"></p>
     </div>
 
-    <p><a href="/">Go to Home Page</a></p>
+    <p><a href="home.html">Go to Home Page</a></p>
 </div>
 
 </body>

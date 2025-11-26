@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+    background-color: #808080;
+}
+
+.create-container {
+    margin-top: 20px; /* 20-pixel gap from the top */
+}
+
+.error-box {
+    border: 1px solid #ff4d4f;
+    padding: 20px;
+    background-color: #fff1f0;
+    display: inline-block;
+}
+
+h1 {
+    color: #ff4d4f;
+}
+
+.login-container {
+    margin-top: 20px;
+}
