@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Create Recipe</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+        background-color: #808080
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/topnav.html :: navbar"></div>
@@ -17,9 +22,8 @@
                     <h3 class="mb-0">Create New Recipe</h3>
                 </div>
                 <div class="card-body">
-                    <form th:action="@{/createRecipe}" method="post">
+                    <form th:action="@{/createRecipe}" method="post" enctype="multipart/form-data">
 
-                        <!-- Recipe Name -->
                         <div class="mb-3">
                             <label for="recipeName" class="form-label">Recipe Name *</label>
                             <input type="text"
@@ -30,7 +34,6 @@
                                    placeholder="Enter recipe name">
                         </div>
 
-                        <!-- Recipe Description -->
                         <div class="mb-3">
                             <label for="recipeDescription" class="form-label">Description *</label>
                             <textarea class="form-control"
@@ -52,7 +55,6 @@
                                       placeholder="List ingredients (comma-separated)"></textarea>
                         </div>
 
-                        <!-- Recipe Category -->
                         <div class="mb-3">
                             <label for="recipeCategory" class="form-label">Category *</label>
                             <select class="form-select" id="recipeCategory" name="recipeCategory" required>
@@ -68,13 +70,16 @@
                             </select>
                         </div>
 
-                        <!-- Submit Buttons -->
+                        <div class="mb-3">
+                            <label for="recipeImage" class="form-label">Upload Image</label>
+                            <input type="file" class="form-control" id="recipeImage" name="recipeImage" accept="image/*">
+                        </div>
+
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn btn-success">Create Recipe</button>
                             <a th:href="@{/home}" class="btn btn-secondary">Cancel</a>
                         </div>
 
-                        <!-- Error/Success Messages -->
                         <div th:if="${error}" class="alert alert-danger mt-3" role="alert">
                             <span th:text="${error}"></span>
                         </div>

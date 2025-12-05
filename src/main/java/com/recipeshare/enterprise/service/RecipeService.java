@@ -2,7 +2,10 @@ package com.recipeshare.enterprise.service;
 
 import com.recipeshare.enterprise.dao.RecipeDAO;
 import com.recipeshare.enterprise.dto.RecipeDTO;
+import com.recipeshare.enterprise.entity.Recipe;
+import com.recipeshare.enterprise.repository.SupabaseImageRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -10,9 +13,11 @@ import java.util.List;
 public class RecipeService implements IRecipeService {
 
     private final RecipeDAO recipeDAO;
+    private final SupabaseImageRepository supabaseImageRepository;
 
-    public RecipeService(RecipeDAO recipeDAO) {
+    public RecipeService(RecipeDAO recipeDAO, SupabaseImageRepository supabaseImageRepository) {
         this.recipeDAO = recipeDAO;
+        this.supabaseImageRepository = supabaseImageRepository;
     }
 
     @Override
@@ -36,13 +41,23 @@ public class RecipeService implements IRecipeService {
         }
     }
 
-    public String saveRecipe(RecipeDTO recipeDTO) {
-        if (recipeDTO == null) {
-            return "ERROR: Invalid recipe data.";
-        }
-        else {
-            recipeDAO.saveRecipe(recipeDTO);
-            return "Recipe saved successfully";
+    @Override
+    public String saveRecipe(RecipeDTO recipeDTO, MultipartFile recipeImage) {
+        try {
+            Recipe savedRecipe = recipeDAO.saveRecipe(recipeDTO);
+            int recipeId = savedRecipe.getRecipeId();
+
+            // if the user chooses to attach an image, upload it
+            if (recipeImage != null && !recipeImage.isEmpty()) {
+                String imageUrl =  supabaseImageRepository.uploadRecipeImage(recipeImage, recipeId);
+                savedRecipe.setImageUrl(imageUrl);
+                recipeDAO.updateRecipe(savedRecipe);
+            }
+
+            return "Recipe created successfully!";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error creating recipe: " + e.getMessage();
         }
     }
 

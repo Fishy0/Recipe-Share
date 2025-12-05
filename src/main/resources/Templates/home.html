@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recipe Home Page</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        body {
+        background-color: #808080
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/topnav.html :: navbar"></div>
@@ -18,6 +23,17 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col" th:each="recipe : ${recipes}">
                 <div class="card h-100 shadow-sm">
+
+                    <img th:if="${recipe.recipeImageUrl != null}"
+                         th:src="${recipe.recipeImageUrl}"
+                         class="card-img-top"
+                         alt="Recipe Image"
+                         style="height: 200px; object-fit: cover;">
+                    <div th:if="${recipe.recipeImageUrl == null}"
+                         class="card-img-top bg-light d-flex align-items-center justify-content-center"
+                         style="height: 200px;">
+                        <span class="text-muted">No image</span>
+                    </div>
 
                     <div class="card-body">
                         <h5 class="card-title" th:text="${recipe.recipeName}">Recipe Name</h5>

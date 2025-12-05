@@ -30,9 +30,14 @@ public class RecipeDAO implements IRecipeDAO {
         return recipe.map(this::convertToDTO).orElse(null);
     }
     @Override
-    public void saveRecipe(RecipeDTO recipe) {
+    public Recipe saveRecipe(RecipeDTO recipe) {
         Recipe recipeEntity = convertToEntity(recipe);
-        repo.save(recipeEntity);
+        return repo.save(recipeEntity);
+    }
+
+    @Override
+    public void updateRecipe(Recipe recipe) {
+        repo.save(recipe);
     }
 
     public void deleteById(int id) {
@@ -69,7 +74,7 @@ public class RecipeDAO implements IRecipeDAO {
                 .collect(Collectors.toList());
     }
 
-    // DTO converter
+    // convert from entity to DTO
     private RecipeDTO convertToDTO(Recipe recipe) {
         return new RecipeDTO(
                 recipe.getRecipeId(),
@@ -78,10 +83,11 @@ public class RecipeDAO implements IRecipeDAO {
                 recipe.getRecipeDescription(),
                 recipe.getRecipeIngredients(),
                 recipe.getRecipeCategory(),
-                recipe.getRecipeLikes()
+                recipe.getRecipeLikes(),
+                recipe.getImageUrl()
         );
     }
-
+    // convert from DTO to entity
     private Recipe convertToEntity(RecipeDTO dto) {
         Recipe recipe = new Recipe();
         recipe.setRecipeId(dto.getRecipeId());
@@ -91,6 +97,7 @@ public class RecipeDAO implements IRecipeDAO {
         recipe.setRecipeIngredients(dto.getRecipeIngredients());
         recipe.setRecipeCategory(dto.getRecipeCategory());
         recipe.setRecipeLikes(dto.getRecipeLikes());
+        recipe.setImageUrl(dto.getRecipeImageUrl());
         return recipe;
     }
 }

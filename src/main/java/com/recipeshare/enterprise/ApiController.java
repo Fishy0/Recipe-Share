@@ -47,7 +47,7 @@ public class ApiController {
      */
     @PostMapping("/recipes")
     public String saveRecipe(@RequestBody RecipeDTO recipeDTO) {
-        return recipeService.saveRecipe(recipeDTO);
+        return recipeService.saveRecipe(recipeDTO, null);
     }
 
     /**

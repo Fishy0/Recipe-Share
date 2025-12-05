@@ -17,5 +17,6 @@ public class RecipeDTO {
     private String recipeIngredients;
     private String recipeCategory;
     private int recipeLikes;
+    private String recipeImageUrl;
 }
 
