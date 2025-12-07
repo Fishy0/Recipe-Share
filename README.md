@@ -1,11 +1,6 @@
 # 0. QuickStart
-For fellow classmates, a simple download of the code and running of main to the IDE will run the program. Navigate to localhost:8080 for the home page. Other pages include:
+For fellow classmates, a simple download of the code and running of main to the IDE will run the program. Navigate to localhost:8080 for the home page.
 
-localhost:8080/api/users
-
-localhost:8080/api/recipes
-
-localhost:8080/UserIndex
 
 
 # 1. Introduction
